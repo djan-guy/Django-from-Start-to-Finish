@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}
+    Affirmations
+{% endblock %}
+
+{% block content %}
+    <section>
+        <h2>Affirmations</h2>
+        <h3>Find comfort and confidence through affirmations and support.</h3>
+        {% for affirmation in affirmations %}
+            <article class="affirmation">
+                <h3>
+                    {{ affirmation.body }}
+                </h3>
+            </article>
+        {% endfor %}
+        <div class="smaller-image">
+            <img src="{% static 'images/lilypads.png' %}" alt="lilypads">
+        </div>
+    </section>
+{% endblock %}

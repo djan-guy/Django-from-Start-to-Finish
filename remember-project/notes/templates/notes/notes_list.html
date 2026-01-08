@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    ReMember - Notes
+{% endblock %}
+
+{% block content %}
+<section>
+    <h2>{{ user.username }}'s Saved Notes</h2>
+    <div class="note-new">
+        <a href="{% url 'notes:note-new' %}">Add New</a>
+    </div>
+    {% if notes %}
+        {% for note in notes %}
+            <article class="note">
+                <h2>{{ note.title }}</h2>
+                <p>📅<small>{{ note.date|date:"M d, Y H:i" }}</small></p>
+                <p>{{ note.body|truncatewords:30 }}</p>
+                <div class="delete">
+                    <form action="{% url 'notes:note-delete' note.pk %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">Delete</button>
+                    </form>
+                </div>
+            </article>
+        {% endfor %}
+    {% else %}
+        <p>No notes saved yet, click "Add New" to create one.</p>
+    {% endif %}
+</section>
+{% endblock %}

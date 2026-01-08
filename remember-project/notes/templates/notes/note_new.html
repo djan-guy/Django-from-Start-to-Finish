@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    New Note
+{% endblock %}
+
+{% block content %}
+    <h2>Your Remembering Notes</h2>
+        <form class="form-with-validation" action="{% url 'notes:note-new' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="note-new">
+                <a href="#" class="form-submit" onclick="this.closest('form').submit(); return false;">Save Note</a>
+            </div>
+        </form>
+{% endblock %}
