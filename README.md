@@ -1,2 +1,2 @@
-# Django-from-Start-to-Finish
-Django from Start to Finish
+# Django-Start-to-Finish
+Django Start to Finish
